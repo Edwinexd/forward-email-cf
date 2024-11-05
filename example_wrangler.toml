@@ -1,0 +1,22 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "forward-email-cf"
+main = "src/index.ts"
+compatibility_date = "2024-10-22"
+compatibility_flags = ["nodejs_compat"]
+
+# Workers Logs
+# Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
+# Configuration: https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs
+[observability]
+enabled = true
+
+# Bind a D1 database. D1 is Cloudflare’s native serverless SQL database.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#d1-databases
+[[d1_databases]]
+binding = "db"
+database_name = "..."
+database_id = "..."
+
+[vars]
+DOMAIN="..."
+TARGET_EMAILS="...,...,..."
